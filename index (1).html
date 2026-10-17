@@ -3,107 +3,316 @@
 <html lang="sk">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ToolPilot SK — Inteligentné nástroje</title>
-<meta name="description" content="Bezplatné inteligentné nástroje, kalkulačky a generátory pre každého.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090d18">
+<meta name="description" content="ToolPilot SK – bezplatné online nástroje, inteligentné kalkulačky a podnikateľské pomôcky.">
+<title>ToolPilot SK | Inteligentné nástroje</title>
 <style>
-:root{color-scheme:dark;--bg:#080b14;--panel:#111725;--line:#273249;--text:#f4f7ff;--muted:#a0aec5;--blue:#6d8cff;--cyan:#54e4d0}
+:root {
+  --bg:#090d18;--panel:#111827;--panel2:#151e30;
+  --line:#27354c;--text:#f4f7ff;--muted:#9eabc1;
+  --blue:#8297ff;--cyan:#55e6d1;
+}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at 80% 0%,#17264a 0,transparent 42%),var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;min-height:100vh}
-header{height:76px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 7%;position:sticky;top:0;background:#080b14eF;backdrop-filter:blur(15px);z-index:5}
-.logo{font-size:23px;font-weight:850;letter-spacing:-1px}.logo span{color:var(--cyan)}
-.pill{border:1px solid #33524f;background:#102b2b;color:var(--cyan);padding:8px 12px;border-radius:30px;font-size:12px}
-main{max-width:1100px;margin:auto;padding:65px 22px 80px}
-.hero{text-align:center;max-width:760px;margin:0 auto 45px}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:radial-gradient(ellipse at 75% 0%,#192950 0%,transparent 38%),var(--bg);
+ color:var(--text);font-family:Inter,system-ui,-apple-system,Arial,sans-serif;
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+header{
+ height:76px;display:flex;align-items:center;justify-content:space-between;
+ padding:0 6%;border-bottom:1px solid var(--line);
+ position:sticky;top:0;z-index:10;background:#090d18ed;backdrop-filter:blur(16px);
+}
+.logo{font-size:23px;font-weight:900;letter-spacing:-1px}
+.logo span{color:var(--cyan)}
+nav{display:flex;gap:25px}
+nav a{font-size:13px;color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--cyan)}
+.badge{border:1px solid #28534e;color:var(--cyan);background:#102724;padding:9px 13px;border-radius:25px;font-size:11px}
+main{max-width:1120px;margin:auto;padding:65px 22px 80px}
+.hero{text-align:center;max-width:800px;margin:0 auto 60px}
 .eyebrow{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
-h1{font-size:clamp(38px,7vw,66px);line-height:1.04;letter-spacing:-2.8px;margin:18px 0}
-h1 span{background:linear-gradient(90deg,#8ca5ff,#58e8d3);color:transparent;background-clip:text}
-.hero p{font-size:17px;line-height:1.8;color:var(--muted);max-width:600px;margin:0 auto 26px}
-.search{display:flex;max-width:590px;margin:auto;background:#111725;border:1px solid #34415b;border-radius:14px;padding:7px}
-.search input{flex:1;min-width:0;background:transparent;color:white;border:0;outline:0;padding:12px;font-size:15px}
-button{cursor:pointer;font:inherit}
-.search button,.primary{border:0;background:linear-gradient(120deg,#748cff,#5872e8);color:white;font-weight:750;border-radius:10px;padding:12px 17px}
-.stats{display:flex;justify-content:center;gap:35px;margin-top:26px;color:var(--muted);font-size:12px}
+h1{font-size:clamp(40px,7vw,72px);line-height:1.05;letter-spacing:-3px;margin:22px 0}
+.gradient{background:linear-gradient(100deg,#94a7ff,#5cebd6);background-clip:text;-webkit-background-clip:text;color:transparent}
+.hero p{max-width:610px;margin:0 auto;color:var(--muted);font-size:16px;line-height:1.8}
+.search{display:flex;max-width:600px;margin:30px auto 0;padding:7px;border:1px solid #34425e;background:#111827;border-radius:14px}
+.search input{min-width:0;flex:1;background:transparent;color:white;border:0;outline:0;padding:12px;font-size:14px}
+.primary{border:0;border-radius:10px;background:linear-gradient(120deg,#8297ff,#6378eb);color:white;font-weight:750;padding:12px 17px}
+.primary:hover{filter:brightness(1.13)}
+.stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:24px;font-size:12px;color:var(--muted)}
 .stats strong{color:white}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:20px}
-h2{font-size:24px;margin:0 0 7px;letter-spacing:-.7px}
-.section-head p{margin:0;color:var(--muted);font-size:13px}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
-.filter{background:transparent;border:1px solid var(--line);color:var(--muted);padding:9px 13px;border-radius:9px;font-size:12px}
-.filter.active{background:#202d4c;border-color:#607bca;color:white}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
-.tool{background:linear-gradient(145deg,#141d2d,#0f1521);border:1px solid var(--line);border-radius:17px;padding:21px;transition:.2s;cursor:pointer;min-height:180px}
-.tool:hover{transform:translateY(-3px);border-color:#667ed0}
-.tool-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:#222e4a;font-size:22px;margin-bottom:17px}
-.tool h3{margin:0 0 8px;font-size:16px}.tool p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
-.tag{display:inline-block;color:var(--cyan);font-size:10px;margin-top:15px;letter-spacing:.7px;text-transform:uppercase}
-.workspace{display:none;margin-top:35px;border:1px solid #405277;border-radius:18px;padding:24px;background:#111827}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:23px}
+h2{font-size:26px;letter-spacing:-.8px;margin:0 0 8px}
+.section-head p{color:var(--muted);font-size:13px;margin:0}
+.filters{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:24px}
+.filter{padding:9px 14px;border-radius:9px;border:1px solid var(--line);background:transparent;color:var(--muted);font-size:12px}
+.filter.active,.filter:hover{color:white;border-color:#657bd2;background:#202c49}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.tool{
+ padding:23px;border:1px solid var(--line);border-radius:17px;
+ background:linear-gradient(145deg,#141e30,#0e1421);cursor:pointer;transition:.2s;
+}
+.tool:hover{transform:translateY(-4px);border-color:#7088db;box-shadow:0 12px 35px #0003}
+.tool-icon{width:45px;height:45px;display:grid;place-items:center;background:#243252;border-radius:13px;font-size:22px;margin-bottom:19px}
+.tool h3{font-size:16px;margin:0 0 9px}
+.tool p{font-size:13px;line-height:1.7;color:var(--muted);margin:0}
+.tag{display:inline-block;margin-top:17px;color:var(--cyan);font-size:10px;text-transform:uppercase;letter-spacing:1px}
+.empty{grid-column:1/-1;padding:35px;text-align:center;color:var(--muted)}
+.workspace{display:none;margin-top:35px;border:1px solid #405479;border-radius:18px;padding:25px;background:var(--panel)}
 .workspace.show{display:block}
-.workspace-top{display:flex;justify-content:space-between;gap:12px;align-items:center}
-.close{background:#202a3b;color:white;border:1px solid var(--line);border-radius:8px;padding:7px 12px}
-label{display:block;color:#b7c3d8;font-size:13px;margin:18px 0 8px}
-textarea,input.field,select.field{width:100%;padding:13px;border:1px solid #35425a;border-radius:10px;background:#090e19;color:white;font:inherit;outline:none}
-textarea{resize:vertical;min-height:115px}
-.result{white-space:pre-wrap;overflow-wrap:anywhere;background:#090e19;border:1px solid #29364b;border-radius:10px;padding:15px;margin-top:16px;line-height:1.7;color:#dce7ff;min-height:45px}
-footer{border-top:1px solid var(--line);padding:25px;text-align:center;color:var(--muted);font-size:12px}
-.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:35px}
-@media(max-width:750px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}main{padding-top:45px}header{padding:0 5%}.stats{gap:15px;flex-wrap:wrap}}
-@media(max-width:480px){.grid{grid-template-columns:1fr}.hero p{font-size:15px}.section-head{align-items:start;flex-direction:column}.search button{padding:10px}.tool{min-height:auto}}
+.worktop{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.worktop h2{font-size:21px}
+.close{border:1px solid var(--line);background:#202b40;color:white;padding:8px 12px;border-radius:9px}
+#description{color:var(--muted);font-size:13px;line-height:1.7}
+.field-wrap{margin-top:19px}
+label{display:block;margin-bottom:8px;font-size:13px;color:#c3cde0}
+.field{width:100%;border:1px solid #34435b;border-radius:10px;background:#090e19;color:white;padding:13px;outline:none}
+.field:focus{border-color:var(--blue)}
+textarea.field{min-height:125px;resize:vertical}
+#result{display:none;margin-top:20px;border:1px solid #2d4056;border-radius:12px;background:#090e19;padding:18px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8;font-size:14px}
+.result-actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.secondary{padding:9px 12px;border-radius:9px;border:1px solid var(--line);background:#182338;color:white;font-size:12px}
+.note{font-size:11px;color:var(--muted);line-height:1.7;margin-top:14px}
+footer{border-top:1px solid var(--line);padding:28px 20px;text-align:center;color:var(--muted);font-size:12px}
+footer strong{color:var(--cyan)}
+@media(max-width:760px){
+ nav{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ main{padding-top:45px}header{padding:0 5%}
+}
+@media(max-width:480px){
+ .grid{grid-template-columns:1fr}.hero p{font-size:14px}
+ .section-head{align-items:start;flex-direction:column}
+ .search .primary{padding:10px;font-size:12px}
+ h1{letter-spacing:-2px}
+ .tool{padding:19px}
+}
 </style>
 </head>
 <body>
 <header>
-  <div class="logo">ToolPilot<span> SK.</span></div>
-  <div class="pill">✦ BEZPLATNÉ NÁSTROJE</div>
+  <a href="#" class="logo" style="text-decoration:none;color:inherit">ToolPilot<span> SK.</span></a>
+  <nav>
+    <a href="#tools">Nástroje</a>
+    <a href="#tools" onclick="setCategory('Podnikanie')">Podnikanie</a>
+    <a href="#tools" onclick="setCategory('Kalkulačky')">Kalkulačky</a>
+    <a href="#about">O projekte</a>
+  </nav>
+  <div class="badge">✦ BEZPLATNÉ NÁSTROJE</div>
 </header>
+
 <main>
-  <section class="hero">
-    <div class="eyebrow">✦ Tvoj digitálny pomocník</div>
-    <h1>Pracuj múdrejšie.<br><span>Vytváraj viac.</span></h1>
-    <p>Objav praktické nástroje, ktoré ti ušetria čas. Od podnikateľských výpočtov až po tvorbu nápadov — všetko na jednom mieste.</p>
-    <div class="search">
-      <input id="search" placeholder="Hľadaj nástroj..." aria-label="Hľadaj nástroj">
-      <button onclick="renderTools()">Hľadať ↗</button>
-    </div>
-    <div class="stats"><span>✦ <strong>Jednoduché</strong> používanie</span><span>⚡ <strong>Okamžité</strong> výsledky</span><span>◈ <strong>Zadarmo</strong></span></div>
-  </section>
-  <section>
-    <div class="section-head"><div><h2>Preskúmaj nástroje</h2><p>Vyber si, čo práve potrebuješ.</p></div></div>
-    <div class="filters" id="filters">
-      <button class="filter active" data-cat="Všetky">Všetky</button>
-      <button class="filter" data-cat="Podnikanie">Podnikanie</button>
-      <button class="filter" data-cat="Texty">Texty a nápady</button>
-      <button class="filter" data-cat="Kalkulačky">Kalkulačky</button>
-    </div>
-    <div class="grid" id="grid"></div>
-  </section>
-  <section class="workspace" id="workspace">
-    <div class="workspace-top"><h2 id="workTitle">Nástroj</h2><button class="close" onclick="closeTool()">Zavrieť ✕</button></div>
-    <p id="workDescription" style="color:var(--muted);font-size:13px"></p>
-    <div id="workFields"></div>
-    <button class="primary" style="margin-top:17px" onclick="runTool()">Vypočítať / Vytvoriť ↗</button>
-    <div class="result" id="result">Tu sa zobrazí výsledok.</div>
-  </section>
+<section class="hero">
+  <div class="eyebrow">✦ Tvoj digitálny pomocník</div>
+  <h1>Pracuj múdrejšie.<br><span class="gradient">Vytváraj viac.</span></h1>
+  <p>Objav nástroje, ktoré ti pomôžu podnikať, počítať, tvoriť nápady a šetriť čas. Všetko na jednom mieste.</p>
+  <div class="search">
+    <input id="search" type="search" placeholder="Čo potrebuješ vyriešiť?" aria-label="Hľadať nástroje">
+    <button class="primary" onclick="renderTools()">Hľadať ↗</button>
+  </div>
+  <div class="stats">
+    <span>⚡ <strong>Okamžité</strong> výsledky</span>
+    <span>◈ <strong>Bezplatné</strong> používanie</span>
+    <span>✓ <strong>Jednoduché</strong> ovládanie</span>
+  </div>
+</section>
+
+<section id="tools">
+  <div class="section-head">
+    <div><h2>Preskúmaj nástroje</h2><p>Vyber si nástroj a začni ho používať.</p></div>
+  </div>
+  <div class="filters">
+    <button class="filter active" data-cat="Všetky">Všetky nástroje</button>
+    <button class="filter" data-cat="Podnikanie">💼 Podnikanie</button>
+    <button class="filter" data-cat="Kalkulačky">🧮 Kalkulačky</button>
+    <button class="filter" data-cat="Texty">✍️ Texty a nápady</button>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="workspace" id="workspace">
+  <div class="worktop">
+    <h2 id="workTitle">Nástroj</h2>
+    <button class="close" onclick="closeTool()">Zavrieť ✕</button>
+  </div>
+  <p id="description"></p>
+  <div id="fields"></div>
+  <button class="primary" id="runButton" style="margin-top:20px" onclick="runTool()">Spustiť nástroj ↗</button>
+  <div id="result"></div>
+  <div class="result-actions" id="resultActions" style="display:none">
+    <button class="secondary" onclick="copyResult()">Kopírovať výsledok</button>
+  </div>
+  <p class="note">Tvoje výpočty prebiehajú priamo v prehliadači. Textové generátory používajú zabudované šablóny, nie externú AI.</p>
+</section>
 </main>
-<footer>© 2026 ToolPilot SK · Praktické nástroje pre tvoje nápady.</footer>
+
+<footer id="about">
+  <div class="logo">ToolPilot<span> SK.</span></div>
+  <p>Praktické nástroje pre tvoje nápady.</p>
+  <p>© 2026 ToolPilot SK · Vytvorené s cieľom zjednodušiť každodennú prácu.</p>
+</footer>
+
 <script>
-const tools=[
-{id:"profit",name:"Kalkulačka zisku",icon:"📈",cat:"Kalkulačky",desc:"Zisti, koľko zarobíš po odpočítaní nákladov.",fields:[["tržby","Tržby (€)","number",1000],["náklady","Náklady (€)","number",600]],run:v=>{let z=v.tržby-v.náklady;return `Tržby: ${v.tržby.toFixed(2)} €\nNáklady: ${v.náklady.toFixed(2)} €\n\n${z>=0?"ZISK":"STRATA"}: ${z.toFixed(2)} €\nMarža: ${v.tržby>0?(z/v.tržby*100).toFixed(1):"0.0"} %`}},
-{id:"margin",name:"Kalkulačka marže",icon:"💶",cat:"Kalkulačky",desc:"Vypočítaj maržu z predajnej ceny a nákladov.",fields:[["predaj","Predajná cena (€)","number",50],["nakup","Nákupná cena (€)","number",30]],run:v=>{let z=v.predaj-v.nakup;return `Hrubý zisk: ${z.toFixed(2)} €\nMarža: ${v.predaj>0?(z/v.predaj*100).toFixed(2):"—"} %\nPrirážka: ${v.nakup>0?(z/v.nakup*100).toFixed(2):"—"} %`}},
-{id:"vat",name:"Kalkulačka DPH",icon:"🧾",cat:"Kalkulačky",desc:"Pridaj alebo odpočítaj zadanú sadzbu DPH.",fields:[["cena","Cena bez DPH (€)","number",100],["sadzba","Sadzba DPH (%)","number",23]],run:v=>`Cena bez DPH: ${v.cena.toFixed(2)} €\nDPH: ${(v.cena*v.sadzba/100).toFixed(2)} €\nCena s DPH: ${(v.cena*(1+v.sadzba/100)).toFixed(2)} €\n\nOver si správnu sadzbu pre svoj tovar.`},
-{id:"discount",name:"Kalkulačka zľavy",icon:"🏷️",cat:"Kalkulačky",desc:"Zisti cenu po zľave a koľko ušetríš.",fields:[["cena","Pôvodná cena (€)","number",80],["zlava","Zľava (%)","number",20]],run:v=>`Pôvodná cena: ${v.cena.toFixed(2)} €\nUšetríš: ${(v.cena*v.zlava/100).toFixed(2)} €\nCena po zľave: ${(v.cena*(1-v.zlava/100)).toFixed(2)} €`},
-{id:"ideas",name:"Generátor podnikateľských nápadov",icon:"💡",cat:"Podnikanie",desc:"Vymysli nápady podľa oblasti, ktorá ťa baví.",fields:[["oblast","Čo ťa zaujíma?","text","technológie, šport, autá"],["rozpocet","Rozpočet (€)","number",50]],run:v=>{let a=v.oblast.toLowerCase();let ideas=["Vytvor informačný web pre konkrétnu skupinu ľudí","Priprav digitálnu šablónu, ktorá rieši bežný problém","Ponúkni miestnym firmám jednoduchý web alebo katalóg","Vytvor porovnávací nástroj pre zákazníkov","Vytvor užitočný kalkulátor a zdieľaj ho online"];return `Oblasť: ${v.oblast}\nRozpočet: ${v.rozpocet} €\n\n${ideas.map((x,i)=>`${i+1}. ${x} zameraný na oblasť ${v.oblast}.\n   Prvý krok: porozprávaj sa s 5 potenciálnymi používateľmi a over, či to potrebujú.`).join("\n\n")}\n\nNápady sú návrhy — úspech ani zárobok nie sú zaručené.`}},
-{id:"text",name:"Vylepšovač textov",icon:"✍️",cat:"Texty",desc:"Uprav text na prehľadnejšiu podobu bez externého AI.",fields:[["text","Vlož svoj text","textarea","Ponúkame kvalitné služby pre každého zákazníka. Naším cieľom je spokojnosť."]],run:v=>{let s=v.text.trim().replace(/[ \t]+/g," ").replace(/\n{3,}/g,"\n\n");return s?s.charAt(0).toLocaleUpperCase("sk")+s.slice(1)+(/[.!?]$/.test(s)?"":"."):"Najprv vlož text."}},
-{id:"names",name:"Generátor názvov značky",icon:"✨",cat:"Texty",desc:"Získaj inšpiráciu na názov projektu alebo značky.",fields:[["tema","Oblasť projektu","text","technológie"],["styl","Štýl názvu","select","moderný"]],run:v=>{let t=v.tema.trim();if(!t)return "Zadaj oblasť projektu.";let root=t.split(/\s+/)[0];return `Nápady pre oblasť „${t}“:\n\n• ${root}Pilot\n• ${root}Lab\n• Nova${root}\n• ${root}Flow\n• Smart${root}\n• ${root}Point\n• Next${root}\n• ${root}Studio\n\nPred použitím skontroluj ochranné známky, doménu a existujúce firmy.`}},
-{id:"goals",name:"Plánovač cieľov",icon:"🎯",cat:"Podnikanie",desc:"Rozdeľ veľký cieľ na malé a konkrétne kroky.",fields:[["ciel","Tvoj cieľ","text","Spustiť vlastný web"],["dni","Počet dní","number",7]],run:v=>{let n=Math.max(1,Math.min(365,Math.round(v.dni)));return `CIEĽ: ${v.ciel}\n\nDEŇ 1 — Napíš, aký problém chceš vyriešiť.\nDEŇ 2 — Preskúmaj 3 existujúce riešenia.\nDEŇ 3 — Porozprávaj sa s potenciálnymi používateľmi.\nDEŇ 4 — Priprav jednoduchú prvú verziu.\nDEŇ 5 — Otestuj ju a oprav chyby.\nDEŇ 6 — Ukáž ju ľuďom a získaj spätnú väzbu.\nDEŇ ${n} — Vyhodnoť výsledky a naplánuj ďalší krok.\n\nPrispôsob si kroky podľa dostupného času.`}}
+const tools = [
+{
+ id:"profit",name:"Kalkulačka zisku",icon:"📈",cat:"Kalkulačky",
+ desc:"Vypočítaj zisk, stratu a ziskovú maržu svojho projektu.",
+ fields:[["revenue","Tržby (€)","number","1000"],["costs","Celkové náklady (€)","number","600"]],
+ run:v=>{let z=v.revenue-v.costs;return `TRŽBY: ${v.revenue.toFixed(2)} €\nNÁKLADY: ${v.costs.toFixed(2)} €\n\n${z>=0?"ZISK":"STRATA"}: ${z.toFixed(2)} €\nMarža: ${v.revenue?((z/v.revenue)*100).toFixed(2):"0.00"} %`}
+},
+{
+ id:"margin",name:"Kalkulačka marže",icon:"💶",cat:"Kalkulačky",
+ desc:"Zisti hrubý zisk, maržu a prirážku pri predaji produktu.",
+ fields:[["price","Predajná cena (€)","number","50"],["buy","Nákupná cena (€)","number","30"]],
+ run:v=>{let z=v.price-v.buy;return `Hrubý zisk: ${z.toFixed(2)} €\nMarža: ${v.price?(z/v.price*100).toFixed(2):"—"} %\nPrirážka: ${v.buy?(z/v.buy*100).toFixed(2):"—"} %`}
+},
+{
+ id:"vat",name:"Kalkulačka DPH",icon:"🧾",cat:"Kalkulačky",
+ desc:"Vypočítaj cenu s DPH podľa zadanej sadzby.",
+ fields:[["base","Cena bez DPH (€)","number","100"],["rate","Sadzba DPH (%)","number","23"]],
+ run:v=>`Cena bez DPH: ${v.base.toFixed(2)} €\nDPH: ${(v.base*v.rate/100).toFixed(2)} €\nCena s DPH: ${(v.base*(1+v.rate/100)).toFixed(2)} €\n\nOver si správnu sadzbu pre konkrétny tovar alebo službu.`
+},
+{
+ id:"discount",name:"Kalkulačka zľavy",icon:"🏷️",cat:"Kalkulačky",
+ desc:"Zisti konečnú cenu a koľko peňazí ušetríš.",
+ fields:[["price","Pôvodná cena (€)","number","80"],["discount","Zľava (%)","number","20"]],
+ run:v=>`Pôvodná cena: ${v.price.toFixed(2)} €\nZľava: ${v.discount.toFixed(2)} %\nUšetríš: ${(v.price*v.discount/100).toFixed(2)} €\nCena po zľave: ${(v.price*(1-v.discount/100)).toFixed(2)} €`
+},
+{
+ id:"ideas",name:"Generátor podnikateľských nápadov",icon:"💡",cat:"Podnikanie",
+ desc:"Získaj nápady na projekty podľa svojich záujmov a rozpočtu.",
+ fields:[["topic","Čo ťa zaujíma?","text","technológie a šport"],["budget","Rozpočet (€)","number","50"]],
+ run:v=>`TVOJE ZADANIE\nOblasť: ${v.topic}\nRozpočet: ${v.budget} €\n\n5 NÁPADOV NA PRESKÚMANIE\n\n1. Užitočný web pre fanúšikov ${v.topic}\nZačni jednoduchou stránkou, ktorá rieši konkrétny problém.\n\n2. Digitálna šablóna\nPriprav pomôcku, ktorú si ľudia môžu stiahnuť a používať.\n\n3. Porovnávací nástroj\nPomôž používateľom porovnať možnosti a vybrať si.\n\n4. Služba pre malé firmy\nVytvor ukážku webu alebo jednoduchého online nástroja.\n\n5. Kalkulačka pre konkrétnu skupinu\nVyrieš častý výpočet a zdieľaj bezplatnú verziu.\n\nPRVÝ KROK\nPorozprávaj sa s piatimi potenciálnymi používateľmi a zisti, čo naozaj potrebujú.\n\nNápady sú návrhy, nie záruka zárobku.`
+},
+{
+ id:"names",name:"Generátor názvov značky",icon:"✨",cat:"Texty",
+ desc:"Nájdi inšpiráciu na názov svojho webu, firmy alebo projektu.",
+ fields:[["topic","Oblasť projektu","text","technológie"],["style","Štýl názvu","select","Moderný"]],
+ run:v=>{let t=v.topic.trim();if(!t)return "Najprv zadaj oblasť projektu.";let word=t.split(/\s+/)[0];return `NÁPADY PRE: ${t}\nŠtýl: ${v.style}\n\n• ${word}Pilot\n• ${word}Lab\n• Nova${word}\n• ${word}Flow\n• Smart${word}\n• Next${word}\n• ${word}Point\n• ${word}Studio\n• ${word}Hub\n• ${word}Works\n\nTip: Pred výberom over dostupnosť domény a existujúce značky.`}
+},
+{
+ id:"text",name:"Vylepšovač textov",icon:"✍️",cat:"Texty",
+ desc:"Uprav medzery, odseky a základné formátovanie svojho textu.",
+ fields:[["text","Vlož text","textarea","Vitaj na našom webe. Ponúkame užitočné služby pre každého."]],
+ run:v=>{let s=v.text.trim().replace(/[ \t]+/g," ").replace(/\n{3,}/g,"\n\n");return s?s.charAt(0).toLocaleUpperCase("sk")+s.slice(1):"Vlož text, ktorý chceš upraviť."}
+},
+{
+ id:"plan",name:"Plánovač cieľov",icon:"🎯",cat:"Podnikanie",
+ desc:"Rozdeľ svoj projekt na zvládnuteľné kroky.",
+ fields:[["goal","Tvoj cieľ","text","Spustiť vlastný web"],["days","Počet dní","number","7"]],
+ run:v=>{let n=Math.max(1,Math.min(365,Math.round(v.days)));return `TVOJ CIEĽ: ${v.goal}\n\n1. deň — Presne si definuj cieľ.\n2. deň — Preskúmaj podobné riešenia.\n3. deň — Zisti, čo ľudia potrebujú.\n4. deň — Vytvor prvú verziu.\n5. deň — Otestuj funkcie a oprav chyby.\n6. deň — Získaj spätnú väzbu.\n${n}. deň — Vyhodnoť výsledok a naplánuj pokračovanie.\n\nPrispôsob jednotlivé kroky svojmu času.`}
+},
+{
+ id:"percentage",name:"Percentuálna kalkulačka",icon:"％",cat:"Kalkulačky",
+ desc:"Vypočítaj percentá z ľubovoľného čísla.",
+ fields:[["number","Základné číslo","number","250"],["percent","Percentá (%)","number","15"]],
+ run:v=>`${v.percent} % z ${v.number} = ${(v.number*v.percent/100).toFixed(2)}\n\nPo pripočítaní: ${(v.number*(1+v.percent/100)).toFixed(2)}\nPo odpočítaní: ${(v.number*(1-v.percent/100)).toFixed(2)}`
+},
+{
+ id:"break",name:"Kalkulačka bodu zvratu",icon:"⚖️",cat:"Podnikanie",
+ desc:"Zisti, koľko kusov musíš predať, aby si pokryl náklady.",
+ fields:[["fixed","Fixné náklady (€)","number","500"],["price","Cena za kus (€)","number","25"],["variable","Náklad na kus (€)","number","10"]],
+ run:v=>{let m=v.price-v.variable;if(m<=0)return "Cena za kus musí byť vyššia než variabilný náklad na kus.";return `Príspevok na úhradu na kus: ${m.toFixed(2)} €\nBod zvratu: ${Math.ceil(v.fixed/m)} kusov\nTržby pri bode zvratu: ${(Math.ceil(v.fixed/m)*v.price).toFixed(2)} €\n\nVýpočet nezahŕňa nepredvídané náklady ani dane.`}
+}
 ];
-let category="Všetky",current=null;
-function renderTools(){let q=document.getElementById("search").value.toLocaleLowerCase("sk");let list=tools.filter(t=>(category==="Všetky"||t.cat===category)&&(t.name+" "+t.desc+" "+t.cat).toLocaleLowerCase("sk").includes(q));document.getElementById("grid").innerHTML=list.length?list.map(t=>`<article class="tool" tabindex="0" role="button" aria-label="${t.name}" onclick="openTool('${t.id}')" onkeydown="if(event.key==='Enter')openTool('${t.id}')"><div class="tool-icon">${t.icon}</div><h3>${t.name}</h3><p>${t.desc}</p><span class="tag">${t.cat} ↗</span></article>`).join(""):'<div class="empty">Nenašli sa žiadne nástroje. Skús iné slovo.</div>'}
-function openTool(id){current=tools.find(t=>t.id===id);if(!current)return;document.getElementById("workTitle").textContent=current.icon+" "+current.name;document.getElementById("workDescription").textContent=current.desc;document.getElementById("result").textContent="Tu sa zobrazí výsledok.";document.getElementById("workFields").innerHTML=current.fields.map(f=>`<label for="f_${f[0]}">${f[1]}</label>${f[2]==="textarea"?`<textarea id="f_${f[0]}">${f[3]}</textarea>`:f[2]==="select"?`<select class="field" id="f_${f[0]}"><option>moderný</option><option>hravý</option><option>luxusný</option></select>`:`<input class="field" id="f_${f[0]}" type="${f[2]}" ${f[2]==="number"?'step="any" min="0"':''} value="${f[3]}">`}`).join("");let w=document.getElementById("workspace");w.classList.add("show");w.scrollIntoView({behavior:"smooth",block:"start"})}
-function runTool(){if(!current)return;let v={};for(let f of current.fields){let el=document.getElementById("f_"+f[0]);v[f[0]]=f[2]==="number"?Number(el.value):el.value;if(f[2]==="number"&&(!el.value.trim()||!Number.isFinite(v[f[0]])||v[f[0]]<0)){document.getElementById("result").textContent="Zadaj platnú nezápornú hodnotu.";return}}try{document.getElementById("result").textContent=current.run(v)}catch(e){document.getElementById("result").textContent="Niečo sa nepodarilo. Skontroluj zadané údaje."}}
-function closeTool(){document.getElementById("workspace").classList.remove("show");current=null}
+
+let category="Všetky";
+let current=null;
+
+function renderTools(){
+ const q=document.getElementById("search").value.trim().toLocaleLowerCase("sk");
+ const filtered=tools.filter(t=>(category==="Všetky"||t.cat===category)&&(t.name+" "+t.desc+" "+t.cat).toLocaleLowerCase("sk").includes(q));
+ const grid=document.getElementById("grid");
+ grid.replaceChildren();
+ if(!filtered.length){grid.innerHTML='<div class="empty">Nič sme nenašli. Skús iné slovo alebo kategóriu.</div>';return;}
+ filtered.forEach(t=>{
+  const card=document.createElement("article");
+  card.className="tool";card.tabIndex=0;card.setAttribute("role","button");
+  const icon=document.createElement("div");icon.className="tool-icon";icon.textContent=t.icon;
+  const title=document.createElement("h3");title.textContent=t.name;
+  const desc=document.createElement("p");desc.textContent=t.desc;
+  const tag=document.createElement("span");tag.className="tag";tag.textContent=t.cat+" ↗";
+  card.append(icon,title,desc,tag);
+  card.addEventListener("click",()=>openTool(t.id));
+  card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openTool(t.id)}});
+  grid.appendChild(card);
+ });
+}
+
+function setCategory(cat){
+ category=cat;
+ document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.cat===cat));
+ renderTools();
+}
+document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>setCategory(b.dataset.cat)));
 document.getElementById("search").addEventListener("input",renderTools);
-document.getElementById("filters").addEventListener("click",e=>{let b=e.target.closest("button[data-cat]");if(!b)return;category=b.dataset.cat;document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));renderTools()});
+
+function openTool(id){
+ current=tools.find(t=>t.id===id);
+ if(!current)return;
+ document.getElementById("workTitle").textContent=current.icon+" "+current.name;
+ document.getElementById("description").textContent=current.desc;
+ const fields=document.getElementById("fields");fields.replaceChildren();
+ current.fields.forEach(f=>{
+  const wrap=document.createElement("div");wrap.className="field-wrap";
+  const label=document.createElement("label");label.htmlFor="field_"+f[0];label.textContent=f[1];
+  let el;
+  if(f[2]==="textarea"){
+   el=document.createElement("textarea");el.className="field";el.value=f[3];
+  }else if(f[2]==="select"){
+   el=document.createElement("select");el.className="field";
+   ["Moderný","Hravý","Luxusný","Minimalistický"].forEach(s=>{let o=document.createElement("option");o.value=s;o.textContent=s;el.appendChild(o)});
+   el.value=f[3];
+  }else{
+   el=document.createElement("input");el.className="field";el.type=f[2];el.value=f[3];
+   if(f[2]==="number"){el.min="0";el.step="any";}
+  }
+  el.id="field_"+f[0];wrap.append(label,el);fields.appendChild(wrap);
+ });
+ document.getElementById("result").style.display="none";
+ document.getElementById("resultActions").style.display="none";
+ const w=document.getElementById("workspace");w.classList.add("show");
+ w.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function runTool(){
+ if(!current)return;
+ const values={};
+ for(const f of current.fields){
+  const el=document.getElementById("field_"+f[0]);
+  if(f[2]==="number"){
+   if(el.value.trim()===""||!Number.isFinite(Number(el.value))||Number(el.value)<0){
+    showResult("Zadaj platné nezáporné čísla do všetkých polí.");return;
+   }
+   values[f[0]]=Number(el.value);
+  }else values[f[0]]=el.value;
+ }
+ try{showResult(current.run(values));}
+ catch(e){showResult("Výpočet sa nepodaril. Skontroluj zadané hodnoty.");}
+}
+function showResult(text){
+ document.getElementById("result").textContent=text;
+ document.getElementById("result").style.display="block";
+ document.getElementById("resultActions").style.display="flex";
+}
+function closeTool(){
+ document.getElementById("workspace").classList.remove("show");current=null;
+}
+function copyResult(){
+ const text=document.getElementById("result").textContent;
+ if(navigator.clipboard&&window.isSecureContext){
+  navigator.clipboard.writeText(text).then(()=>alert("Výsledok bol skopírovaný.")).catch(()=>fallbackCopy(text));
+ }else fallbackCopy(text);
+}
+function fallbackCopy(text){
+ const area=document.createElement("textarea");area.value=text;
+ document.body.appendChild(area);area.select();
+ try{document.execCommand("copy");alert("Výsledok bol skopírovaný.");}
+ catch(e){alert("Označ a skopíruj text výsledku ručne.");}
+ area.remove();
+}
 renderTools();
 </script>
 </body>
